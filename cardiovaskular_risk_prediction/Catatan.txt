@@ -1,0 +1,7 @@
+Perbedaan tipe data pada kolom-kolom dapat menyebabkan masalah saat dilakukan operasi seperti .flatten(), terutama jika kita mencoba mengonversi hasilnya ke dalam tensor TensorFlow. TensorFlow cenderung lebih ketat dalam hal tipe data dan struktur.
+
+Untuk mengatasi masalah ini, pastikan bahwa kita memiliki konsistensi tipe data dalam kolom-kolom yang kita gunakan, terutama jika kita melakukan operasi seperti .flatten() atau mengonversi data ke dalam tensor TensorFlow. Kita dapat mengonversi tipe data kolom-kolom menjadi tipe data yang sesuai sebelum melakukan operasi tersebut. Dari dataset kita, hanya kolom Oldpeak yang memiliki tipe data float. 
+
+Jika nilai "Oldpeak" yang semula dalam tipe data float dan kita mengubahnya menjadi tipe data int secara manual, ini bisa mempengaruhi hasil pelatihan dan evaluasi model. Karena nilai "Oldpeak" yang mengandung informasi desimal menjadi diskret (tanpa desimal) sebagai tipe data int, maka informasi perubahan detil dalam segmen ST pada EKG mungkin akan hilang. Oleh karena itu, kita akan mengubah semua kolom ke float.
+
+Pengubahan tipe data menjadi float tidak akan mengubah cara model memperlakukan nilai-nilai tersebut. Model akan mengekstrak pola dari data dan mencoba menghubungkan fitur-fitur ini dengan target yang relevan, tanpa mempedulikan apakah nilai-nilai tersebut awalnya adalah int atau float. Model akan mengadaptasi dirinya untuk bekerja dengan jenis data ini dan tidak akan memiliki masalah dalam memahami bahwa nilai-nilai ini mewakili kondisi biner (misalnya, ya/tidak, 1/0, on/off).
