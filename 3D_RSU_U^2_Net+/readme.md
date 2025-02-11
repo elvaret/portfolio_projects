@@ -1,1 +1,1 @@
-Note: I haven't uploaded the code and the journal yet because the journal is still under review for international journal publication.
+Note: This paper has been published and is now available at this link: https://www.ijcit.com/index.php/ijcit/article/view/403
